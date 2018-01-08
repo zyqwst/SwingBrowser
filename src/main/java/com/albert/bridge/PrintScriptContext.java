@@ -14,7 +14,6 @@ import com.albert.utils.MyException;
 */
 public class PrintScriptContext implements ScriptContext {
 
-
 	@Override
 	public void call(String params) throws MyException {
 		System.out.println(params);
