@@ -20,7 +20,7 @@ public class MainFrame extends JFrame implements ConsoleListener{
 	 * 
 	 */
 	private static final long serialVersionUID = -487732622394297438L;
-	private final static String homeUrl = "http://122.225.97.133:9912/medicinechain";
+	private final static String homeUrl = "http://192.168.1.40:9000/ZYYK";
 	public void init() {
     	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // 得到屏幕的尺寸
         Browser browser = new Browser();

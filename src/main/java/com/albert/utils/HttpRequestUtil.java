@@ -30,10 +30,10 @@ public class HttpRequestUtil {
             ois = new ObjectInputStream(is);
             entity = ois.readObject();
         } catch (SocketException e) {
-            throw new Exception("Connection timed out: connect");
+            throw new Exception("URL连接超时："+httpUrl);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new Exception(e.getMessage());
+            throw new Exception("URL访问错误："+e.getMessage());
         }finally{
         	if(is!=null)
         	 is.close();
