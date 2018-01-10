@@ -8,7 +8,9 @@ import javax.swing.WindowConstants;
 
 import com.albert.bridge.PrintScriptContext;
 import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.BrowserPreferences;
 import com.teamdev.jxbrowser.chromium.JSValue;
+import com.teamdev.jxbrowser.chromium.NavigationEntry;
 import com.teamdev.jxbrowser.chromium.events.ConsoleEvent;
 import com.teamdev.jxbrowser.chromium.events.ConsoleListener;
 import com.teamdev.jxbrowser.chromium.events.ScriptContextAdapter;
@@ -23,6 +25,7 @@ public class MainFrame extends JFrame implements ConsoleListener{
 	private final static String homeUrl = "http://192.168.1.40:9000/ZYYK";
 	public void init() {
     	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // 得到屏幕的尺寸
+    	 BrowserPreferences.setUserAgent("SHUANGYI");
         Browser browser = new Browser();
         final BrowserView view = new BrowserView(browser);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
