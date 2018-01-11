@@ -53,7 +53,7 @@ public class JsonUtil {
 			fileReader.close();
 			return str.toString();
 		} catch (FileNotFoundException e) {
-			throw new MyException("文件未找到："+path);
+			throw new MyException("file not found："+path);
 		} catch (IOException e) {
 			throw new MyException(e);
 		}
@@ -75,7 +75,7 @@ public class JsonUtil {
 			writer.write(json);
 			writer.close();
 		} catch (FileNotFoundException e) {
-			throw new MyException("文件未找到："+path);
+			throw new MyException("file not found："+path);
 		}
 	}
 }

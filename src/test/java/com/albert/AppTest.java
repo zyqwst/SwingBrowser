@@ -1,6 +1,9 @@
 package com.albert;
 
+import com.albert.pojo.ConfigEntity;
+import com.albert.utils.JsonUtil;
 import com.albert.utils.MyException;
+import com.google.gson.Gson;
 
 /**
  * Unit test for simple App.
@@ -8,7 +11,9 @@ import com.albert.utils.MyException;
 public class AppTest
 {
     public static void main(String[] args) throws  MyException {
-    	AppContext context = AppContext.getInstance();
-    	context.init();
+    	ConfigEntity config = new ConfigEntity();
+    	config.setUrl("http://localhost:9000/ZYYK/");
+    	Gson gson = JsonUtil.getGson();
+    	JsonUtil.writeJson(gson.toJson(config));
 	}
 }

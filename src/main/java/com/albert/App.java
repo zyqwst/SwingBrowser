@@ -14,8 +14,8 @@ public class App {
 			public void run() {
 				try {
 					MainFrame frame = new MainFrame();
-					frame.init();
 					frame.setVisible(true);
+					frame.load();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
