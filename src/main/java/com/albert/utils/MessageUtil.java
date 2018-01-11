@@ -57,4 +57,5 @@ public class MessageUtil {
 	public final static String initSuccess = "init.success";
 	public final static String serviceError = "service.error";
 	public final static String settingMenu = "com.albert.ui.MainFrame.JMenu.SETTING";
+	public final static String menuHome = "com.albert.ui.MainFrame.JMenu";
 }

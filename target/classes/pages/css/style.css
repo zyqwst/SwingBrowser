@@ -1,0 +1,28 @@
+html,
+body,
+header,
+#intro {
+    height: 100%;
+}
+
+#intro {
+    background: url("../img/index.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+       
+.top-nav-collapse {
+  background-color: #24355C;
+}
+.file-field.medium .file-path-wrapper {
+  height: 3rem; }
+  .file-field.medium .file-path-wrapper .file-path {
+    height: 2.8rem; }
+
+.file-field.big-2 .file-path-wrapper {
+  height: 3.7rem; }
+  .file-field.big-2 .file-path-wrapper .file-path {
+    height: 3.5rem; }
+                

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--Main Navigation-->
+  <header>
+
+      <!--Mask-->
+      <div  id="intro" class="view hm-black-strong">
+              
+
+          <div class="container-fluid full-bg-img d-flex  align-items-center justify-content-center">
+              
+              <div class="row d-flex justify-content-center">
+                  <div class="col-md-10 text-center">
+                      <!-- Heading -->
+                      <h2 class="display-3 font-bold white-text mb-2">SwingBrowser</h2>
+
+                      <!-- Divider -->
+                      <hr class="hr-light">
+
+                      <!-- Description -->
+                      <h4 class="white-text my-4">基于Chromium内核的Swing浏览器。桌面应用的利器，给Web插上翅膀。
+                      </h4>
+                      <p class="white-text my-3">将C/S应用转换成B/S应用，弥补WEB应用难以实现的个性化需求，比如套打。更重要的是摆脱了C/S应用的频繁更新升级的问题。<a href="http://www.baidu.com">了解更多</a></p>
+                      <button type="button" class="btn btn-outline-white" id="print-btn">打 印<i class="fa fa-print ml-2"></i></button>
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+      <!--/.Mask-->
+                  
+  </header>
+  <!--Main Navigation-->
+    <!--Main layout-->
+    <main class="mt-5">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <form>
+                  <div class="file-field medium">
+                      <div class="btn btn-unique">
+                          <span>选择文件</span>
+                          <input type="file" id="fucks" multiple >
+                      </div>
+                      <div class="file-path-wrapper">
+                         <input class="file-path validate" type="text" placeholder="Upload your file">
+                      </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4">
+
+                    <!--Card image-->
+                    <div class="view overlay hm-white-slight">
+                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" class="img-fluid" alt="">
+                        <a href="#">
+                            <div class="mask"></div>
+                        </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title">Card title</h4>
+                        <!--Text-->
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button onclick="alert('我是alert')" class="btn btn-primary">Button</button>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+            
+
+        </div>
+    </main>
+    <footer>
+      
+    </footer>
+
+    <!--/.Footer--> 
+        
+    <!-- /Start your project here-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!--Google Maps-->
+    <!-- <script src="https://maps.google.com/maps/api/js"></script> -->
+    <!-- Carousel options -->
+    <script type="text/javascript">
+      $(function(){
+        $("#print-btn").click(function(){
+          console.log("传递打印数据key到swing，然后swing根据key向服务器请求打印数据并打印");
+          window.printContext.call("key");
+        });
+      })
+    </script>
+              
+</body>
+
+</html>

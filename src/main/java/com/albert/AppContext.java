@@ -3,6 +3,7 @@
  */
 package com.albert;
 
+import java.awt.Window;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
@@ -10,6 +11,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.albert.pojo.ConfigEntity;
+import com.albert.ui.SettingDialog;
 import com.albert.utils.JsonUtil;
 import com.albert.utils.MessageUtil;
 import com.albert.utils.MyException;
@@ -22,9 +24,11 @@ import com.albert.utils.MyException;
 *  
 */
 public class AppContext {
+	
 	private ConfigEntity config;
 	private Map<String,String> i18nMap;
 	private final Log log = LogFactory.getLog(getClass());
+	private SettingDialog settingDialog;
 	private synchronized void initConfig() {
 		try {
 			String str = JsonUtil.readJson();
@@ -51,6 +55,7 @@ public class AppContext {
     	initConfig();
     	initI18n();
     }    
+    
     public static final AppContext getInstance() {    
        return LazyHolder.INSTANCE;    
     }    
@@ -63,4 +68,9 @@ public class AppContext {
 	public Map<String,String> getI18nMap() {
 		return i18nMap;
 	}
+	public synchronized SettingDialog getSettingDialog(Window owner) {
+		if(settingDialog==null) settingDialog = new SettingDialog(owner);
+		return settingDialog;
+	}
+
 }

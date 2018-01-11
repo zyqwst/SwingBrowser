@@ -10,6 +10,11 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JDialog;
 
+import com.albert.AppContext;
+import com.albert.utils.MessageUtil;
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+
 /** 
 * @ClassName: SettingDialog 
 * @Description: 
@@ -20,21 +25,27 @@ import javax.swing.JDialog;
 public class SettingDialog extends BaseDialog {
 	public SettingDialog(Window window) {
 		super(window);
+		Browser browser = new Browser();
+	     BrowserView view = new BrowserView(browser);
+	     String url = getClass().getResource("/pages/print.html").toString();
+	     System.out.println(url);
+	     browser.loadURL(url);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 619, Short.MAX_VALUE)
+				.addComponent(view, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 513, Short.MAX_VALUE)
+				.addComponent(view, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 		);
 		getContentPane().setLayout(groupLayout);
+		 
 	}
 	@Override
 	public void customizedInit() {
 		super.customizedInit();
-		setTitle("设置");
+		setTitle(AppContext.getInstance().getI18nMap().get(MessageUtil.settingMenu));
 	}
 	/**
 	 * 

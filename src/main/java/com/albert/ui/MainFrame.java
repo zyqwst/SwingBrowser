@@ -4,14 +4,15 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -27,9 +28,10 @@ import com.teamdev.jxbrowser.chromium.events.ScriptContextAdapter;
 import com.teamdev.jxbrowser.chromium.events.ScriptContextEvent;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 
-public class MainFrame extends JFrame implements ConsoleListener,MenuListener{
+public class MainFrame extends JFrame implements ConsoleListener,ActionListener{
 	private static final long serialVersionUID = -487732622394297438L;
-	private JMenu settingMenu ;
+	private JMenu menuHome ;
+	private JMenuItem item1;
 	public MainFrame(){
 		super();
 		initMainFrame();
@@ -43,13 +45,16 @@ public class MainFrame extends JFrame implements ConsoleListener,MenuListener{
     	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // 得到屏幕的尺寸
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(0,0,screenSize.width,screenSize.height);
-        setLocationRelativeTo(null);
     }
    private void initMenu(){
+	   	Map<String,String> kv = AppContext.getInstance().getI18nMap();
 	   	JMenuBar jb = new JMenuBar();
-		settingMenu = new JMenu(MessageUtil.getMessage(MessageUtil.settingMenu));
-		settingMenu.addMenuListener(this);
-		jb.add(settingMenu);
+	   	menuHome = new JMenu(kv.get(MessageUtil.menuHome));
+		item1 = new JMenuItem(kv.get(MessageUtil.settingMenu));
+		item1.setAccelerator(KeyStroke.getKeyStroke('S',java.awt.Event.ALT_MASK));
+		item1.addActionListener(this);
+		menuHome.add(item1);
+		jb.add(menuHome);
 		setJMenuBar(jb);
    }
    public void load(){
@@ -79,17 +84,10 @@ public class MainFrame extends JFrame implements ConsoleListener,MenuListener{
 		System.out.println(event.getMessage());
 	}
 	@Override
-	public void menuSelected(MenuEvent e) {
-		if(e.getSource()==settingMenu){
-			System.out.println("点击设置");
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==item1){
+			AppContext.getInstance().getSettingDialog(this).setVisible(true);;
 		}
 	}
-	@Override
-	public void menuDeselected(MenuEvent e) {
-		
-	}
-	@Override
-	public void menuCanceled(MenuEvent e) {
-		
-	}  
+	
 } 
