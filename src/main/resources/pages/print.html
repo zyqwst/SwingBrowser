@@ -18,81 +18,98 @@
 
 <body>
 
-  <!--Main Navigation-->
-  <header>
-
-      <!--Mask-->
-      <div  id="intro" class="view hm-black-strong">
-              
-
-          <div class="container-fluid full-bg-img d-flex  align-items-center justify-content-center">
-              
-              <div class="row d-flex justify-content-center">
-                  <div class="col-md-10 text-center">
-                      <!-- Heading -->
-                      <h2 class="display-3 font-bold white-text mb-2">SwingBrowser</h2>
-
-                      <!-- Divider -->
-                      <hr class="hr-light">
-
-                      <!-- Description -->
-                      <h4 class="white-text my-4">基于Chromium内核的Swing浏览器。桌面应用的利器，给Web插上翅膀。
-                      </h4>
-                      <p class="white-text my-3">将C/S应用转换成B/S应用，弥补WEB应用难以实现的个性化需求，比如套打。更重要的是摆脱了C/S应用的频繁更新升级的问题。<a href="http://www.baidu.com">了解更多</a></p>
-                      <button type="button" class="btn btn-outline-white" id="print-btn">打 印<i class="fa fa-print ml-2"></i></button>
-                  </div>
-              </div>
-
-          </div>
-
-      </div>
-      <!--/.Mask-->
-                  
-  </header>
-  <!--Main Navigation-->
     <!--Main layout-->
-    <main class="mt-5">
-        <div class="container">
-            <div class="row">
-              <div class="col-md-4">
-                <form>
-                  <div class="file-field medium">
-                      <div class="btn btn-unique">
-                          <span>选择文件</span>
-                          <input type="file" id="fucks" multiple >
-                      </div>
-                      <div class="file-path-wrapper">
-                         <input class="file-path validate" type="text" placeholder="Upload your file">
-                      </div>
+    <main>
+                                    
+        <!-- Nav tabs -->
+        <div class="tabs-wrapper"> 
+            <ul class="nav nav-tabs nav-justified mr-0 ml-0 tabs-blue" role="tablist">
+                <li class="nav-item waves-effect waves-light">
+                    <a class="nav-link active" data-toggle="tab" href="#hostLink" role="tab"><i class="fa fa-link fa-2x" aria-hidden="true"></i><br> 服务器</a>
+                </li>
+                <li class="nav-item waves-effect waves-light">
+                    <a class="nav-link " data-toggle="tab" href="#printSetting" role="tab"><i class="fa fa-print fa-2x" aria-hidden="true"></i><br> 打印机</a>
+                </li>
+                <li class="nav-item waves-effect waves-light">
+                    <a class="nav-link" data-toggle="tab" href="#about" role="tab"><i class="fa fa-info fa-2x" aria-hidden="true"></i><br> 关于</a>
+                </li>
+               
+            </ul>
+        </div>
+
+        <!-- Tab panels -->
+        <div class="tab-content">
+            <!--Panel 1-->
+            <div class="tab-pane fade in show active mt-1" id="hostLink" role="tabpanel">
+                  <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>提示!</strong> 必须输入正确的服务器地址，否则应用将无法正常运行
                   </div>
-                </form>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4">
-
-                    <!--Card image-->
-                    <div class="view overlay hm-white-slight">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" class="img-fluid" alt="">
-                        <a href="#">
-                            <div class="mask"></div>
-                        </a>
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title">Card title</h4>
-                        <!--Text-->
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button onclick="alert('我是alert')" class="btn btn-primary">Button</button>
-                    </div>
-
-                </div>
-              </div>
+                   <div class="row">
+                       <div class="col-md-9">
+                           <div class="md-form">
+                               <i class="fa fa-link prefix"></i>
+                               <input type="text" id="hostUrl" class="form-control">
+                           </div>
+                       </div>
+                       <div class="col-md-3">
+                         <button class="btn btn-primary btn-lg btn-block">确定</button>
+                       </div>
+                  </div>
+                
             </div>
-            
+            <!--/.Panel 1-->
+
+            <!--Panel 2-->
+            <div class="tab-pane fade" id="printSetting" role="tabpanel">
+                <div class="alert alert-info alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>说明</strong> 首次打印可以个性化打印设置，之后可以在此修改
+                </div>
+                <table class="table table-hover table-sm" id="printer-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th data-field="jasper">模板</th>
+                      <th data-field="printer">打印机</th>
+                      <th data-field="preview">打印预览</th>
+                      <th data-field="status">打印机可用</th>
+                      <th data-field="set">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>入库单</td>
+                      <td>入库单打印机(HP Printer)</td>
+                      <td>是</td>
+                      <td><i class="fa fa-exclamation-triangle text-warning" title="打印机不可用"></i></td>
+                      <td><a class="text-dark" onclick="selectRow('1')"><i class="fa fa-cog"></i></a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>出库单</td>
+                      <td>入库单打印机(HP Printer)</td>
+                      <td>是</td>
+                      <td><i class="fa fa-exclamation-triangle text-warning" title="打印机不可用"></i></td>
+                      <td><a class="text-dark"  onclick="selectRow('2')"><i class="fa fa-cog"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <!--/.Panel 2-->
+
+            <!--Panel 3-->
+            <div class="tab-pane fade" id="about" role="tabpanel">
+                <p class="mt-4"><strong>SwingBrowser</strong> 是一款集成了Chromium引擎的C/S应用。延伸出 Swing + HTML5 的开发模式</p>
+                <p class="mt-4">Copyright <i class="fa fa-copyright"></i> 2018 <a class="text-primary" onclick="alert('请用浏览器访问: http://www.sviip.com')">Albert Zhang</a>. All rights reserved. </p>
+            </div>
+            <!--/.Panel 3-->
+
 
         </div>
+                                    
+                    
     </main>
     <footer>
       
@@ -111,18 +128,16 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!--Google Maps-->
-    <!-- <script src="https://maps.google.com/maps/api/js"></script> -->
-    <!-- Carousel options -->
+    
     <script type="text/javascript">
-      $(function(){
-        $("#print-btn").click(function(){
-          console.log("传递打印数据key到swing，然后swing根据key向服务器请求打印数据并打印");
-          window.printContext.call("key");
-        });
-      })
-    </script>
-              
+      function selectRow(row){
+        console.log(sessionStorage.myKey);
+        window.top.settingContext.selectRow(row+"行");
+      }
+      function renderTable(data){
+        console.log(data);
+      }
+    </script>  
 </body>
 
 </html>
