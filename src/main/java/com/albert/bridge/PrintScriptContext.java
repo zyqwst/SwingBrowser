@@ -18,7 +18,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 *  
 */
 public class PrintScriptContext implements ScriptContext {
-
 	@Override
 	public void call(String params) throws MyException {
 		try {
