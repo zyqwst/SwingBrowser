@@ -6,7 +6,7 @@ package com.albert;
 import java.awt.Window;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -60,7 +60,7 @@ public class AppContext {
        return LazyHolder.INSTANCE;    
     }    
 	public void checkConfig(ConfigEntity config) throws MyException{
-		if(StringUtils.isBlank(config.getUrl())) throw new MyException("Host URL is blank,you have to set it;");
+		if(StringUtils.isBlank((CharSequence) config.getUrl())) throw new MyException("Host URL is blank,you have to set it;");
 	}
 	public ConfigEntity getConfig() {
 		return config;

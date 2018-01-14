@@ -1,9 +1,7 @@
-/**
- * 
- */
 package com.albert.pojo;
 
 import java.util.Set;
+
 
 import net.sf.jasperreports.engine.util.DigestUtils;
 
