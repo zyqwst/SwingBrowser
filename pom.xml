@@ -13,10 +13,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	<repository>
-		<id>com.teamdev</id>
-		<url>http://maven.teamdev.com/repository/products</url>
-	</repository>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -111,4 +107,51 @@
 			<version>2.1</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<finalName>SwingBrowser</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<verbose>true</verbose>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptors>
+						<descriptor>assembly.xml</descriptor>
+					</descriptors>
+					<outputDirectory>${project.build.directory}/dist/</outputDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.albert.App</mainClass>
+							<classpathPrefix>lib/</classpathPrefix>
+							<addClasspath>true</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<!-- 在Class-Path下添加配置文件的路径 -->
+							<Class-Path>lib/jxbrowser-refine-6.14.2.jar;lib/license.jar</Class-Path>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

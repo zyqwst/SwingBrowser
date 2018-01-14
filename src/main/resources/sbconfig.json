@@ -1,3 +1,11 @@
 {
-  "url":"http://localhost:9000/ZYYK"
+  "jasperPrinters": [
+    {
+      "uuid": "50506f734c72d6edbaf60363ef34beb6",
+      "jasper": "入库单",
+      "printer": "打印机1",
+      "review": 1
+    }
+  ],
+  "url": "http://localhost:9000/ZYYK/"
 }

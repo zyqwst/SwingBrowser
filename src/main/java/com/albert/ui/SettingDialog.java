@@ -11,7 +11,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JDialog;
 
 import com.albert.AppContext;
+import com.albert.utils.JsonUtil;
 import com.albert.utils.MessageUtil;
+import com.albert.utils.MyException;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.JSValue;
 import com.teamdev.jxbrowser.chromium.WebStorage;
@@ -61,7 +63,11 @@ public class SettingDialog extends BaseDialog implements ConsoleListener{
             public void onDocumentLoadedInMainFrame(LoadEvent event) {
                 Browser browser = event.getBrowser();
                 WebStorage webStorage = browser.getSessionWebStorage();
-                webStorage.setItem("myKey", "马勒戈壁");
+                try {
+					webStorage.setItem("setting_dialog_data", JsonUtil.toJson(AppContext.getInstance().getConfig()));
+				} catch (MyException e) {
+					e.printStackTrace();
+				}
             }
         });
 	}
@@ -87,7 +93,7 @@ public class SettingDialog extends BaseDialog implements ConsoleListener{
 	}
 	public class SettingBridge{
 		public void selectRow(String json){
-			System.out.println(json);
+			System.out.println("后台打印"+json);
 		}
 	}
 	@Override

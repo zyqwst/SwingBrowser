@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 
 /** 
 * @ClassName: JsonUtil 
@@ -28,7 +29,13 @@ public class JsonUtil {
 		        .setPrettyPrinting()
 		        .create();
 	}
-	
+	public static String toJson(Object obj) throws MyException{
+		return getGson().toJson(obj);
+	}
+	public <T> T fromJson(String json, Class<T> classOfT) throws JsonSyntaxException {
+	    T object =getGson().fromJson(json, classOfT);
+	    return object;
+	  }
 	public static String readJson() throws MyException{
 		return readJson(path);
 	}
@@ -57,6 +64,11 @@ public class JsonUtil {
 		} catch (IOException e) {
 			throw new MyException(e);
 		}
+	}
+	
+	public static void writeObject(Object obj)throws MyException{
+		writeJson(getGson().toJson(obj));
+		
 	}
 	
 	public static void writeJson(String json) throws MyException{

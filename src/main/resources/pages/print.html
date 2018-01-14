@@ -131,8 +131,8 @@
     
     <script type="text/javascript">
       function selectRow(row){
-        console.log(sessionStorage.myKey);
-        settingContext.selectRow(row+"行");
+        console.log("JS打印"+sessionStorage.setting_dialog_data);
+        settingContext.selectRow(sessionStorage.setting_dialog_data);
       }
       function renderTable(data){
         console.log(data);
