@@ -78,22 +78,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>入库单</td>
-                      <td>入库单打印机(HP Printer)</td>
-                      <td>是</td>
-                      <td><i class="fa fa-exclamation-triangle text-warning" title="打印机不可用"></i></td>
-                      <td><a class="text-dark" onclick="selectRow('1')"><i class="fa fa-cog"></i></a></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>出库单</td>
-                      <td>入库单打印机(HP Printer)</td>
-                      <td>是</td>
-                      <td><i class="fa fa-exclamation-triangle text-warning" title="打印机不可用"></i></td>
-                      <td><a class="text-dark"  onclick="selectRow('2')"><i class="fa fa-cog"></i></a></td>
-                    </tr>
+                     <script id="table-data" type="text/x-jquery-tmpl">  
+                      <tr>
+                        <td scope="row">1</td>
+                        <td>${jasper}</td>
+                        <td>${printer}</td>
+                        <td>${preview}</td>
+                        <td><i class="fa fa-exclamation-triangle text-warning" title="打印机不可用"></i>${status}</td>
+                        <td><a class="text-dark select-row" title="${uuid}"><i class="fa fa-cog"></i></a></td>
+                      </tr>
+                     </script>
                   </tbody>
                 </table>
             </div>
@@ -128,15 +122,14 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
-    
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript">
-      function selectRow(row){
-        console.log("JS打印"+sessionStorage.setting_dialog_data);
-        settingContext.selectRow(sessionStorage.setting_dialog_data);
-      }
-      function renderTable(data){
-        console.log(data);
-      }
+      $(function(){
+        $(".select-row").click(function(){
+          settingContext.selectRow($(this).attr("title"));
+        });
+      })
     </script>  
 </body>
 

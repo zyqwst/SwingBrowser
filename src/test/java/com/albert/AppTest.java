@@ -3,6 +3,8 @@ package com.albert;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import com.albert.pojo.ConfigEntity;
 import com.albert.pojo.ConfigEntity.JasperForPrinter;
 import com.albert.utils.JsonUtil;
@@ -23,6 +25,7 @@ public class AppTest
     	Gson gson = JsonUtil.getGson();
     	String str = gson.toJson(config);
     	System.out.println(str);
-    	JsonUtil.writeJson(str);
+//    	JsonUtil.writeJson(str);
+    	System.out.println(StringEscapeUtils.escapeJson(str));
 	}
 }

@@ -8,6 +8,9 @@ import java.awt.Window;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import javax.swing.JDialog;
 
 import com.albert.AppContext;
@@ -33,11 +36,12 @@ import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 *  
 */
 public class SettingDialog extends BaseDialog implements ConsoleListener{
+	Browser browser;
 	public SettingDialog(Window window) {
 		super(window);
-		Browser browser = new Browser();
+		browser = new Browser();
 	    BrowserView view = new BrowserView(browser);
-	    String url = getClass().getResource("/pages/print.html").toString();
+	    String url = getClass().getResource("/pages/setting.html").toString();
 	    browser.loadURL(url);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -56,15 +60,19 @@ public class SettingDialog extends BaseDialog implements ConsoleListener{
 	               Browser browser = event.getBrowser();
 	               JSValue window = browser.executeJavaScriptAndReturnValue("window");
 	               window.asObject().setProperty("settingContext", new SettingBridge());
+	               
 	           }
 	     });
 		browser.addLoadListener(new LoadAdapter() {
             @Override
             public void onDocumentLoadedInMainFrame(LoadEvent event) {
                 Browser browser = event.getBrowser();
-                WebStorage webStorage = browser.getSessionWebStorage();
+//                WebStorage webStorage = browser.getSessionWebStorage();
                 try {
-					webStorage.setItem("setting_dialog_data", JsonUtil.toJson(AppContext.getInstance().getConfig()));
+                	String str = JsonUtil.toJson(AppContext.getInstance().getConfig());
+//					webStorage.setItem("setting_dialog_data", );
+                	String s = StringEscapeUtils.escapeJson(str);
+					 browser.executeJavaScript("setting.tableInit('"+s+"')");  
 				} catch (MyException e) {
 					e.printStackTrace();
 				}
