@@ -8,10 +8,9 @@ import java.awt.Window;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JDialog;
 
 import org.apache.commons.lang3.StringEscapeUtils;
-
-import javax.swing.JDialog;
 
 import com.albert.AppContext;
 import com.albert.pojo.ConfigEntity.JasperForPrinter;
@@ -20,12 +19,10 @@ import com.albert.utils.MessageUtil;
 import com.albert.utils.MyException;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.JSValue;
-import com.teamdev.jxbrowser.chromium.WebStorage;
 import com.teamdev.jxbrowser.chromium.events.ConsoleEvent;
 import com.teamdev.jxbrowser.chromium.events.ConsoleListener;
 import com.teamdev.jxbrowser.chromium.events.FinishLoadingEvent;
 import com.teamdev.jxbrowser.chromium.events.LoadAdapter;
-import com.teamdev.jxbrowser.chromium.events.LoadEvent;
 import com.teamdev.jxbrowser.chromium.events.ScriptContextAdapter;
 import com.teamdev.jxbrowser.chromium.events.ScriptContextEvent;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
@@ -71,10 +68,8 @@ public class SettingDialog extends BaseDialog implements ConsoleListener{
             	super.onFinishLoadingFrame(event);
             	System.out.println("finishLoad");
             	Browser browser = event.getBrowser();
-//              WebStorage webStorage = browser.getSessionWebStorage();
             	try {
               	String str = JsonUtil.toJson(AppContext.getInstance().getConfig());
-//					webStorage.setItem("setting_dialog_data", );
               	String s = StringEscapeUtils.escapeJson(str);
 					browser.executeJavaScript("setting.tableInit('"+s+"')");  
 				} catch (MyException e) {
