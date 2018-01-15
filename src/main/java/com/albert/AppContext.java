@@ -34,7 +34,7 @@ public class AppContext {
 	private Map<String,String> i18nMap;
 	private final Log log = LogFactory.getLog(getClass());
 	private SettingDialog settingDialog;
-	private Set<String> printerNames;
+	private Set<PrintService> printServices;
 	private synchronized void initConfig() {
 		try {
 			String str = JsonUtil.readJsonFromFile();
@@ -54,12 +54,12 @@ public class AppContext {
 			log.error("i18n init failure");
 		}
 	}
-	private synchronized void initPrinter(){
-		printerNames = new LinkedHashSet<String>();
+	public synchronized void initPrinter(){
+		printServices = new LinkedHashSet<PrintService>();
 		PrintService[] services = PrinterJob.lookupPrintServices();
 		for(PrintService ps : services){
 			System.out.println(ps.getName());
-			printerNames.add(ps.getName());
+			printServices.add(ps);
 		}
 	}
 	private static class LazyHolder {    
