@@ -72,7 +72,6 @@
                       <th>#</th>
                       <th data-field="jasper">模板</th>
                       <th data-field="printer">打印机</th>
-                      <th data-field="preview">打印预览</th>
                       <th data-field="status">打印机可用</th>
                       <th data-field="set">操作</th>
                     </tr>
@@ -83,9 +82,12 @@
                         <td scope="row">1</td>
                         <td>${jasper}</td>
                         <td>${printer}</td>
-                        <td>${preview}</td>
-                        <td><i class="fa fa-exclamation-triangle text-warning" title="打印机不可用"></i>${status}</td>
-                        <td><a class="text-dark select-row" title="${uuid}"><i class="fa fa-cog"></i></a></td>
+                        <td>
+                          {{if status}}
+                            <i class="fa fa-exclamation-triangle text-warning" title="打印机不可用"/>
+                          {{/if}}
+                        </td>
+                        <td><a class="text-dark select-row" title="${uuid}" onclick="settingContext.selectRow('${uuid}')"><i class="fa fa-cog"></i></a></td>
                       </tr>
                      </script>
                   </tbody>
@@ -94,7 +96,7 @@
             <!--/.Panel 2-->
 
             <!--Panel 3-->
-            <div class="tab-pane fade" id="about" role="tabpanel">
+            <div class="tab-pane fade text-center" id="about" role="tabpanel">
                 <p class="mt-4"><strong>SwingBrowser</strong> 是一款集成了Chromium引擎的C/S应用。延伸出 Swing + HTML5 的开发模式</p>
                 <p class="mt-4">Copyright <i class="fa fa-copyright"></i> 2018 <a class="text-primary" onclick="alert('请用浏览器访问: http://www.sviip.com')">Albert Zhang</a>. All rights reserved. </p>
             </div>
@@ -122,15 +124,12 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
-    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tmpl.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript">
-      $(function(){
-        $(".select-row").click(function(){
-          settingContext.selectRow($(this).attr("title"));
-        });
-      })
+      
     </script>  
+    
 </body>
 
 </html>

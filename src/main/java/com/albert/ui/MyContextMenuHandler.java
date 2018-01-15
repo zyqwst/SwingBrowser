@@ -36,7 +36,7 @@ public class MyContextMenuHandler implements ContextMenuHandler {
             final Browser browser = params.getBrowser();
             popupMenu.add(createMenuItem("刷新",true, new Runnable() {
                 public void run() {
-                    browser.reload();
+                    browser.reloadIgnoringCache();
                     browser.getCurrentNavigationEntryIndex();
                 }
             }));

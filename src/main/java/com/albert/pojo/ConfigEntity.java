@@ -24,8 +24,8 @@ public class ConfigEntity {
 		this.url=url;
 		this.jasperPrinters= jasperForPrinters;
 	}
-	public JasperForPrinter genPrinter(String jasper, String printer, Integer review){
-		return new JasperForPrinter(jasper, printer, review);
+	public JasperForPrinter genPrinter(String jasper, String printer){
+		return new JasperForPrinter(jasper, printer);
 	}
 	public String getUrl() {
 		return url;
@@ -45,16 +45,14 @@ public class ConfigEntity {
 		private String uuid;
 		private String jasper;
 		private String printer;
-		private Integer review;
 		private Boolean status;
 		
 		public JasperForPrinter() {
 		}
 		
-		public JasperForPrinter(String jasper, String printer, Integer review) {
+		public JasperForPrinter(String jasper, String printer) {
 			this.jasper = jasper;
 			this.printer = printer;
-			this.review = review;
 			this.uuid =DigestUtils.instance().md5(jasper.trim()).toString();
 			
 		}
@@ -76,12 +74,6 @@ public class ConfigEntity {
 		}
 		public void setPrinter(String printer) {
 			this.printer = printer;
-		}
-		public Integer getReview() {
-			return review;
-		}
-		public void setReview(Integer review) {
-			this.review = review;
 		}
 		public Boolean getStatus() {
 			return status;

@@ -36,8 +36,8 @@ public class JsonUtil {
 	    T object =getGson().fromJson(json, classOfT);
 	    return object;
 	  }
-	public static String readJson() throws MyException{
-		return readJson(path);
+	public static String readJsonFromFile() throws MyException{
+		return readJsonFromFile(path);
 	}
 	/**
 	 * 从文件读取json
@@ -45,7 +45,7 @@ public class JsonUtil {
 	 * @return
 	 * @throws MyException 
 	 */
-	public static String readJson(String path) throws MyException{
+	public static String readJsonFromFile(String path) throws MyException{
 		StringBuffer str;
 		try {
 			File file = new File (path); 

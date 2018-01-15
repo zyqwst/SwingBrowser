@@ -4,7 +4,13 @@
       "uuid": "50506f734c72d6edbaf60363ef34beb6",
       "jasper": "入库单",
       "printer": "打印机1",
-      "review": 1
+      "status" :false
+    }
+    ,{
+      "uuid": "50506f734c72d6edbaf60363ef34beb2",
+      "jasper": "出库单",
+      "printer": "打印机2",
+      "status" :true
     }
   ],
   "url":"http://122.112.197.187:3377/confinement/"

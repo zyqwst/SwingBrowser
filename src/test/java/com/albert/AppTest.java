@@ -21,7 +21,7 @@ public class AppTest
     	ConfigEntity config = new ConfigEntity();
     	config.setUrl("http://localhost:9000/ZYYK/");
     	config.setJasperPrinters(printer);
-    	printer.add(config.genPrinter("入库单", "打印机1", 1));
+    	printer.add(config.genPrinter("入库单", "打印机1"));
     	Gson gson = JsonUtil.getGson();
     	String str = gson.toJson(config);
     	System.out.println(str);
