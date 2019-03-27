@@ -22,8 +22,11 @@ import com.albert.utils.MessageUtil;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.BrowserPreferences;
 import com.teamdev.jxbrowser.chromium.JSValue;
+import com.teamdev.jxbrowser.chromium.SavePageType;
 import com.teamdev.jxbrowser.chromium.events.ConsoleEvent;
 import com.teamdev.jxbrowser.chromium.events.ConsoleListener;
+import com.teamdev.jxbrowser.chromium.events.FinishLoadingEvent;
+import com.teamdev.jxbrowser.chromium.events.LoadAdapter;
 import com.teamdev.jxbrowser.chromium.events.ScriptContextAdapter;
 import com.teamdev.jxbrowser.chromium.events.ScriptContextEvent;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
@@ -73,6 +76,24 @@ public class MainFrame extends JFrame implements ConsoleListener,ActionListener{
                Browser browser = event.getBrowser();
                JSValue window = browser.executeJavaScriptAndReturnValue("window");
                window.asObject().setProperty("printContext", new PrintScriptContext());
+           }
+       });
+       browser.addLoadListener(new LoadAdapter() {
+           @Override
+           public void onFinishLoadingFrame(FinishLoadingEvent event) {
+               if (event.isMainFrame()) {
+               	event.getBrowser().executeJavaScript(
+                           "window.scrollTo(document.body.scrollWidth, " +
+                           "5000);");
+               	try {
+						Thread.sleep(1000);
+						String filePath = "C:\\Users\\Administrator\\Desktop\\fff\\index.html";
+						String dirPath = "C:\\Users\\Administrator\\Desktop\\fff\\resources";
+						event.getBrowser().saveWebPage(filePath, dirPath, SavePageType.COMPLETE_HTML);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+               }
            }
        });
        add(view, BorderLayout.CENTER);
